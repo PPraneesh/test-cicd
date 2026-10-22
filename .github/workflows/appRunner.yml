@@ -1,0 +1,19 @@
+name: test ci cd
+on: 
+  push:
+    branches: [main]
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: checkout code
+          uses: actions/Checkout@v4
+        - name: set up node.js
+          uses: actions/setup_node@v4
+          with:
+            node_version: '18'
+        - name: Install deps
+          run: npm install
+        - name: Test project
+          run: npm run test
+          
